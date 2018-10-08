@@ -1,0 +1,11 @@
+{
+  "name": "firstnode",
+  "version": "1.0.0",
+  "description": "first test on node automatically created package.json file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kavi",
+  "license": "ISC"
+}
