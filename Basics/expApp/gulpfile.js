@@ -1,7 +1,6 @@
 var gulp = require('gulp'),
     nodemon = require('gulp-nodemon');
 
-
 //syntax 
 //gulp.task('default',function(){nodemon({...}).on('restart',function(){...}); });
 
