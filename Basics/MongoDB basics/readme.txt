@@ -16,3 +16,13 @@ db.books.insert([
     bookAuthor: "Kavi chelvan", 
     unitSold: 1800
 }]);
+
+
+show dbs
+db
+use db
+show collections
+db.books.find().pretty()
+db.books.find({"unitSold":{$gte:500}}).pretty()
+db.books.update({'bookName':'How to code'},{'unitSold': 8000})
+db.books.find().sort({'unitSold':1}).pretty()
