@@ -17,6 +17,12 @@ db.books.insert([
     unitSold: 1800
 }]);
 
+/*
+*   Go to C:\Program Files\MongoDB\Server\4.0\bin
+*   open cmd and go to this path
+*   type mongod.exe
+*   type mongo.exe
+*/
 
 show dbs
 db
