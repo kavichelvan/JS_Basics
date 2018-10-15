@@ -2,8 +2,9 @@ var express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser');
 
-var db=mongoose.connect('mongodb://localhost:27017/demo');
+var db=mongoose.connect('mongodb://localhost:27017/bookAPI');
 var Details = require("./models/detailsModel");
+var Book = require("./models/bookModel");
 
 var app=express();
 var port = process.env.port || 8080;
@@ -26,6 +27,29 @@ bookRouter.route('/Books').get(function(req,res){
 */
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+//simplifying the code
+bookRouter = require('./Routes/bookRoutes')(Book);
+app.use('/api/books', bookRouter); 
+
+/*
+//giving all route information here
+bookRouter.route('/books')
+.post(function(req,res){
+    var books = new Books(req.body);
+     console.log(books);
+     res.send(books);
+})
+.get(function(req,res){
+    Books.find(function(err,bookDetails){
+         if(err)
+             //console.log(err);
+             res.status(500).send(err);
+         else
+            res.json(bookDetails);
+    })
+ });
+ app.use('/',bookRouter);
 
 //router 2
 bookRouter.route('/Details')
@@ -73,7 +97,7 @@ fs.readFile('page.html',(err,html)=> {
     res.write(html);
 });
 
-
+*/
 
 //default router
 app.get('/',function(req,res){
@@ -84,4 +108,3 @@ app.listen(port,function(){
     console.log("Gulp is Running on port number : "+port);
 });
 
-});

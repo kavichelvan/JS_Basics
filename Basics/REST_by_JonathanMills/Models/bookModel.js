@@ -2,15 +2,13 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
     var bookModel = new Schema({
-        title: { 
+        bookName: { 
             type:String
-        },author: {
+        },bookAuthor: {
             type:String
-        },genre: {
-            type:String
-        },read: {
-            type: Boolean,default: false
+        },unitSold: {
+            type:Number
         }
     });
 
-    module.exports = mongoose.model('Book', bookModel);
+    module.exports = mongoose.model('Books', bookModel);
