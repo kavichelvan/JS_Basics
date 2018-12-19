@@ -13,14 +13,18 @@ else {
     console.log("Invalid");
 }
 */
-var value = "n329635";
+var key = "kvi@gmail.co";
 var idFormat = /^[AaNn][0-9]{6}$/;
-if(value.match(idFormat) || validator.validate(value)){
+var emailFormat = /^[a-zA-Z]+[@]{1}[a-zA-Z]+[.]{1}[a-zA-Z]+$/;
+var emailFormatNew = /^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]+[@]{1}[a-zA-Z]+[.]{1}[a-zA-Z]+$/g;
+//if(key.match(idFormat) || validator.validate(key)){
+if(key.match(idFormat) || key.match(emailFormatNew)){
     console.log("valid ID all");
 }
 else {
     console.log("Invalid ID all");
 }
+
 
 /*
 var inputText = "kavi@a.com";
