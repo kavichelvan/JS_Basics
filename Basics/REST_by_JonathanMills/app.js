@@ -1,8 +1,8 @@
 var express = require('express'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    bodyParser = require('body-parser');
 
 var db=mongoose.connect('mongodb://localhost:27017/demo');
-var Book = require('./models/bookModel');
 var Details = require("./models/detailsModel");
 
 var app=express();
@@ -10,6 +10,8 @@ var port = process.env.port || 8080;
 
 //creating a router
 var bookRouter =express.Router();
+
+/*
 //router 1
 bookRouter.route('/Books').get(function(req,res){
    Book.find(function(err,books){
@@ -21,18 +23,36 @@ bookRouter.route('/Books').get(function(req,res){
    //res.json(responseJson);
     
 });
+*/
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 //router 2
-bookRouter.route('/Details').get(function(req,res){
+bookRouter.route('/Details')
+.post(function(req,res){
+    var detail = new Details(req.body);
+     console.log(detail);
+     res.send(detail);
+})
+.get(function(req,res){
     Details.find(function(err,details){
          if(err)
-             console.log(err);
+             //console.log(err);
+             res.status(500).send(err);
          else
-            res.json(details.name);
-
+            res.json(details);
     })
-    //res.json(responseJson);
-     
+ });
+
+ //router 3
+ bookRouter.route('/Details/:detailsId').get(function(req,res){
+    Details.findById(req.params.detailsId, function(err,detail){
+         if(err)
+             //console.log(err);
+             res.status(500).send(err);
+         else
+            res.json(detail);
+    })
  });
 app.use('/',bookRouter);
 
